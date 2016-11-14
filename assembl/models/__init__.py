@@ -292,3 +292,4 @@ from .announcement import (
 
 def includeme(config):
     config.include('.langstrings')
+    config.include('.preferences')
