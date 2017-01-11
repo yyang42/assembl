@@ -109,11 +109,11 @@ msgstr "Ordre des panneaux dans la vue simple"
 
 #: assembl/models/preferences.py:384
 msgid "Navigation, Idea, Messages"
-msgstr "Navigation, Idée, Messages"
+msgstr "Navigation, Sujet, Messages"
 
 #: assembl/models/preferences.py:385
 msgid "Navigation, Messages, Idea"
-msgstr "Navigation, Messages, Idée"
+msgstr "Navigation, Messages, Sujet"
 
 #: assembl/models/preferences.py:386
 msgid "Order of panels"
@@ -125,7 +125,7 @@ msgstr "Partage social"
 
 #: assembl/models/preferences.py:400
 msgid "Show the share button on posts and ideas"
-msgstr "Voir le bouton Partager sur les messages et le panneau Idée"
+msgstr "Voir le bouton Partager sur les messages et le panneau Sujet"
 
 #: assembl/models/preferences.py:411
 msgid "Private authentication server"
@@ -183,15 +183,15 @@ msgstr ""
 
 #: assembl/models/preferences.py:488
 msgid "Idea panel opens automatically"
-msgstr "Le panneau idée s'ouvre automatiquement"
+msgstr "Le panneau sujet s'ouvre automatiquement"
 
 #: assembl/models/preferences.py:491
 msgid ""
 "Does the Idea panel automatically open when an idea is clicked ? (and "
 "close when a special section is clicked)"
 msgstr ""
-"Est-ce que le panneau idée s'ouvre automatiquement quand une idée est "
-"cliquée depuis la table des idées ? (et se ferme quand une section "
+"Est-ce que le panneau sujet s'ouvre automatiquement quand un sujet est "
+"cliqué depuis la table des sujets ? (et se ferme quand une section "
 "spéciale est cliquée)"
 
 #: assembl/models/preferences.py:503
@@ -302,15 +302,15 @@ msgstr ""
 
 #: assembl/models/preferences.py:728
 msgid "Default Table of Ideas Collapsed state"
-msgstr "État déployé/replié par défaut de la Table des Idées"
+msgstr "État déployé/replié par défaut de la Table des Sujets"
 
 #: assembl/models/preferences.py:731
 msgid ""
 "Default expanded/collapsed state of each idea in the table of ideas. A "
 "user can override it by opening/closing an idea"
 msgstr ""
-"L’état déployé/replié par défaut pour chaque idée dans la table des "
-"idées. (L’état déployé/replié de l’utilisateur aura préséance.)"
+"L’état déployé/replié par défaut pour chaque sujet dans la table des "
+"sujets. (L’état déployé/replié de l’utilisateur aura préséance.)"
 
 #: assembl/models/preferences.py:746
 msgid "Preference data"
@@ -412,15 +412,15 @@ msgstr ""
 
 #: assembl/static/js/app/models/idea.js:119
 msgid "The root idea will not be in the synthesis"
-msgstr "L’idée-racine ne fera pas partie de la synthèse"
+msgstr "Le sujet-racine ne fera pas partie de la synthèse"
 
 #: assembl/static/js/app/models/idea.js:130
 msgid "Add a description of this idea"
-msgstr "Ajouter une description de cette idée"
+msgstr "Ajouter une description de ce sujet"
 
 #: assembl/static/js/app/models/idea.js:142
 msgid "The root idea will never be in the synthesis"
-msgstr "L’idée-racine ne fera jamais partie de la synthèse"
+msgstr "Le sujet-racine ne fera jamais partie de la synthèse"
 
 #: assembl/static/js/app/models/idea.js:155
 msgid "You can add an expression for the next synthesis"
@@ -433,7 +433,7 @@ msgstr "Tous les messages"
 #: assembl/static/js/app/models/idea.js:178
 #: assembl/static/js/app/views/ideaPanel.js:522
 msgid "New idea"
-msgstr "Ajouter une idée"
+msgstr "Ajouter un sujet"
 
 #: assembl/static/js/app/models/segment.js:114
 msgid "You must be logged in to create segments"
@@ -507,7 +507,7 @@ msgstr "Ajouter une conclusion"
 
 #: assembl/static/js/app/models/widget.js:258
 msgid "Create a voting session on this idea"
-msgstr "Créer une session de vote sur cette idée"
+msgstr "Créer une session de vote sur ce sujet"
 
 #: assembl/static/js/app/models/widget.js:261
 #: assembl/static/js/app/models/widget.js:273
@@ -592,15 +592,15 @@ msgstr "vous avez %s pour voter"
 
 #: assembl/static/js/app/models/widget.js:426
 msgid "Create a multi-criterion voting session on this idea"
-msgstr "Créer une session de vote multi-critère sur cette idée"
+msgstr "Créer une session de vote multi-critère sur ce sujet"
 
 #: assembl/static/js/app/models/widget.js:462
 msgid "Create a token voting session on this idea"
-msgstr "Créer une session de vote par jetons sur cette idée"
+msgstr "Créer une session de vote par jetons sur ce sujet"
 
 #: assembl/static/js/app/models/widget.js:1020
 msgid "Create a creativity session on this idea"
-msgstr "Créer une session de créativité sur cette idée"
+msgstr "Créer une session de créativité sur ce sujet"
 
 #: assembl/static/js/app/models/widget.js:1023
 #: assembl/static/js/app/models/widget.js:1037
@@ -609,7 +609,7 @@ msgstr "Participez"
 
 #: assembl/static/js/app/models/widget.js:1030
 msgid "Configure the creativity session on this idea"
-msgstr "Configurez la session de créativité sur cette idée"
+msgstr "Configurez la session de créativité sur ce sujet"
 
 #: assembl/static/js/app/models/widget.js:1039
 msgid "Review the session"
@@ -638,7 +638,7 @@ msgstr "Vous avez %s pour y participer"
 
 #: assembl/static/js/app/models/widget.js:1162
 msgid "Create an inspiration module on this idea"
-msgstr "Créer un module d’inspiration sur cette idée"
+msgstr "Créer un module d’inspiration sur ce sujet"
 
 #: assembl/static/js/app/models/widget.js:1164
 msgid "Create an inspiration module on this discussion"
@@ -650,7 +650,7 @@ msgstr "Configurer le module d’inspiration associé à la discussion"
 
 #: assembl/static/js/app/models/widget.js:1168
 msgid "Configure the inspiration module associated to this idea"
-msgstr "Configurer le module d’inspiration associé à cette idée"
+msgstr "Configurer le module d’inspiration associé à ce sujet"
 
 #: assembl/static/js/app/models/widget.js:1171
 #: assembl/templates/views/messageList.tmpl:35
@@ -725,7 +725,7 @@ msgstr ""
 
 #: assembl/static/js/app/utils/tours/assemblTours.js:91
 msgid "Spot relevant quotes on each idea"
-msgstr "Repérez en un clin d’oeil les citations éclairantes sur chaque idée"
+msgstr "Repérez en un clin d’oeil les citations éclairantes sur chaque sujet"
 
 #: assembl/static/js/app/utils/tours/assemblTours.js:92
 msgid ""
@@ -737,7 +737,7 @@ msgstr ""
 
 #: assembl/static/js/app/utils/tours/assemblTours.js:107
 msgid "Explore one of these topics"
-msgstr "Utilisez cette table des idées comme outil de navigation"
+msgstr "Utilisez cette table des sujets comme outil de navigation"
 
 #: assembl/static/js/app/utils/tours/assemblTours.js:108
 msgid ""
@@ -745,7 +745,7 @@ msgid ""
 "of contents. Clicking on a topic will filter the conversation to only "
 "show messages that are related to this topic."
 msgstr ""
-"Cette table des idées vous permet d’explorer les thèmes qui vous "
+"Cette table des sujets vous permet d’explorer les thèmes qui vous "
 "intéressent plus particulièrement. Chaque thème est constitué de tous les"
 " messages échangés par la communauté mentionnant ce thème et ses sous-"
 "thèmes."
@@ -789,14 +789,14 @@ msgstr ""
 
 #: assembl/static/js/app/utils/tours/assemblTours.js:155
 msgid "Dig more on an interesting idea and post your contribution"
-msgstr "Explorez l’idée qui vous intéresse et apportez votre contribution"
+msgstr "Explorez le sujet qui vous intéresse et apportez votre contribution"
 
 #: assembl/static/js/app/utils/tours/assemblTours.js:157
 msgid ""
 "You can click on this idea to see current discussions happening on it. "
 "You would be able to start contributing on this idea from there."
 msgstr ""
-"Vous pouvez cliquer sur cette idée pour découvrir les échanges en cours "
+"Vous pouvez cliquer sur ce sujet pour découvrir les échanges en cours "
 "sur celle-ci. Vous pourrez ensuite y contribuer."
 
 #: assembl/static/js/app/utils/tours/assemblTours.js:170
@@ -851,7 +851,7 @@ msgstr ""
 
 #: assembl/static/js/app/views/attachments.js:507
 msgid "Upload an Image to the Idea Panel"
-msgstr "Téléversez une image pour le panneau de l'idée"
+msgstr "Téléversez une image pour le panneau du sujet"
 
 #: assembl/static/js/app/views/baseMessageList.js:186
 msgid "Recently active threads"
@@ -931,7 +931,7 @@ msgstr "Annuler"
 msgid "You can drag the segment below directly to the table of ideas"
 msgstr ""
 "Vous pouvez glisser l’extrait ci-dessous directement sur la table des "
-"idées"
+"sujets"
 
 #: assembl/static/js/app/views/baseMessageList.js:1562
 msgid "You can also copy-paste from the text in the zone below"
@@ -944,7 +944,7 @@ msgstr ""
 msgid ""
 "This extract was organized in the idea \" %s \" by the facilitator of the"
 " debate"
-msgstr "Cet extrait extract a été classé dans l’idée \" %s \" par un modérateur"
+msgstr "Cet extrait extract a été classé dans le sujet \" %s \" par un modérateur"
 
 #: assembl/static/js/app/views/baseMessageList.js:1606
 msgid "This extract is in a harvester's clipboard and hasn' been sorted yet."
@@ -1079,7 +1079,7 @@ msgid ""
 "democratic discussions that lead to idea generation and innovation."
 msgstr ""
 "Assembl est un outil d’intelligence collective, conçu pour permettre des "
-"discussions ouvertes et démocratiques menant à la génération d’idées et "
+"discussions ouvertes et démocratiques menant à la génération d’sujets et "
 "l’innovation."
 
 #: assembl/static/js/app/views/facebookViews.js:866
@@ -1132,26 +1132,26 @@ msgstr "Veuillez compléter la connexion à Facebook"
 
 #: assembl/static/js/app/views/ideaClassificationOnMessage.js:153
 msgid "Go to this idea"
-msgstr "Aller vers cette idée"
+msgstr "Aller vers ce sujet"
 
 #: assembl/static/js/app/views/ideaClassificationOnMessage.js:363
 msgid "This message is linked to the following idea because: "
 msgid_plural "This message is linked to the %1$d following ideas because: "
-msgstr[0] "Ce message est en lien avec l’idée suivante car : "
-msgstr[1] "Ce message est en lien avec les %1$d idées suivantes car : "
+msgstr[0] "Ce message est en lien avec le sujet suivant car : "
+msgstr[1] "Ce message est en lien avec les %1$d sujets suivants car : "
 
 #: assembl/static/js/app/views/ideaClassificationOnMessage.js:368
 msgid "Link between this message and the idea"
 msgid_plural "Links between this message and ideas"
-msgstr[0] "Lien entre ce message et cette idée"
-msgstr[1] "Liens entre ce message et ces idées"
+msgstr[0] "Lien entre ce message et ce sujet"
+msgstr[1] "Liens entre ce message et ces sujets"
 
 #: assembl/static/js/app/views/ideaInSynthesis.js:159
 #, python-format
 msgid "%d message is available under this idea"
 msgid_plural "%d messages are available under this idea"
-msgstr[0] "%d message est disponible sous cette idée"
-msgstr[1] "%d messages sont disponibles sous cette idée"
+msgstr[0] "%d message est disponible sous ce sujet"
+msgstr[1] "%d messages sont disponibles sous ce sujet"
 
 #: assembl/static/js/app/views/ideaInSynthesis.js:229
 #: assembl/static/js/app/views/message.js:859
@@ -1172,7 +1172,7 @@ msgstr "Vous n’avez pas encore écrit de réponse"
 #: assembl/templates/views/create-group.tmpl:42
 #: assembl/templates/views/ideaList.tmpl:14
 msgid "Table of ideas"
-msgstr "Table des idées"
+msgstr "Table des sujets"
 
 #: assembl/static/js/app/views/ideaList.js:810
 msgid "You don't have the permission to do this."
@@ -1180,26 +1180,26 @@ msgstr "Vous n’avez pas la permission de faire cela."
 
 #: assembl/static/js/app/views/ideaPanel.js:208
 msgid "Idea"
-msgstr "Idée"
+msgstr "Sujet"
 
 #: assembl/static/js/app/views/ideaPanel.js:211
 msgid ""
 "Detailled information about the currently selected idea in the Table of "
 "ideas"
 msgstr ""
-"Information détaillée sur l’idée qui est sélectionnée dans la table des "
-"idées"
+"Information détaillée sur le sujet qui est sélectionné dans la table des "
+"sujets"
 
 #: assembl/static/js/app/views/ideaPanel.js:219
 msgid "This idea has no sub-ideas"
-msgstr "Cette idée n’a aucune sous-idée"
+msgstr "Ce sujet n’a aucun sous-sujet"
 
 #: assembl/static/js/app/views/ideaPanel.js:222
 #, python-format
 msgid "This idea has %d sub-idea"
 msgid_plural "This idea has %d sub-ideas"
-msgstr[0] "Cette idée a %d sous-idée"
-msgstr[1] "Cette idée a %d sous-idées"
+msgstr[0] "Ce sujet a %d sous-sujet"
+msgstr[1] "Ce sujet a %d sous-sujets"
 
 #: assembl/static/js/app/views/ideaPanel.js:243
 msgid "No extract was harvested"
@@ -1232,25 +1232,25 @@ msgstr[1] "%d contributeurs"
 
 #: assembl/static/js/app/views/ideaPanel.js:521
 msgid "Short expression (only a few words) of the idea in the table of ideas."
-msgstr "Expression brève (quelques mots) de l’idée dans la table des idées"
+msgstr "Expression brève (quelques mots) du sujet dans la table des sujets"
 
 #: assembl/static/js/app/views/ideaPanel.js:713
 msgid "You cannot delete an idea while it has sub-ideas."
-msgstr "Vous ne pouvez pas effacer une idée ayant des sous-idées."
+msgstr "Vous ne pouvez pas effacer un sujet ayant des sous-sujets."
 
 #: assembl/static/js/app/views/ideaPanel.js:724
 msgid "You cannot delete an idea associated to extracts."
-msgstr "Vous ne pouvez pas effacer une idée associée à des extraits."
+msgstr "Vous ne pouvez pas effacer un sujet associée à des extraits."
 
 #: assembl/static/js/app/views/ideaPanel.js:733
 msgid "You cannot delete an idea associated to comments."
 msgstr ""
-"Vous ne pouvez pas effacer une idée qui a déjà été commentée par les "
+"Vous ne pouvez pas effacer un sujet qui a déjà été commenté par les "
 "participants."
 
 #: assembl/static/js/app/views/ideaPanel.js:753
 msgid "Confirm that you want to delete this idea."
-msgstr "Confirmez que vous souhaitez supprimer cette idée."
+msgstr "Confirmez que vous souhaitez supprimer ce sujet."
 
 #: assembl/static/js/app/views/ideaPanel.js:754
 #: assembl/static/js/app/views/message.js:1586
@@ -1268,20 +1268,20 @@ msgstr "Confirmez que vous souhaitez renvoyer tous les extraits au presse-papier
 
 #: assembl/static/js/app/views/ideaPanel.js:998
 msgid "You may want to describe this idea for users here..."
-msgstr "Vous pouvez décrire cette idée ici pour les utilisateurs..."
+msgstr "Vous pouvez décrire ce sujet ici pour les utilisateurs..."
 
 #: assembl/static/js/app/views/message.js:174
 msgid "This message is linked to the following idea: "
 msgid_plural "This message is linked to the following ideas: "
-msgstr[0] "Ce message est en lien avec l’idée :"
-msgstr[1] "Ce message est en lien avec les idées :"
+msgstr[0] "Ce message est en lien avec le sujet :"
+msgstr[1] "Ce message est en lien avec les sujets :"
 
 #: assembl/static/js/app/views/message.js:178
 #, python-format
 msgid "and %d other idea</a>"
 msgid_plural "and %d other ideas</a>"
-msgstr[0] "et %d autre idée"
-msgstr[1] "et %d autres idées"
+msgstr[0] "et %d autre sujet"
+msgstr[1] "et %d autres sujets"
 
 #: assembl/static/js/app/views/message.js:1568
 msgid "Message has been successfully deleted."
@@ -1518,7 +1518,7 @@ msgstr "N’inclure que les messages qui sont dans la liste d’identifiants fou
 
 #: assembl/static/js/app/views/postFilters.js:224
 msgid "Related to idea"
-msgstr "Relatif à l’idée"
+msgstr "Relatif au sujet"
 
 #: assembl/static/js/app/views/postFilters.js:227
 msgid ""
@@ -1526,16 +1526,16 @@ msgid ""
 "recursive:  Messages related to ideas that are descendents of the idea "
 "are included."
 msgstr ""
-"N’incluez que les messages relatifs à une idée spécifique. Le filtre est "
-"récursif: Les messages liés à des idées en-dessous de l’idée courante "
+"N’incluez que les messages relatifs à un sujet spécifique. Le filtre est "
+"récursif: Les messages liés à des sujets en-dessous du sujet courant "
 "seront inclus."
 
 #: assembl/static/js/app/views/postFilters.js:242
 #, python-format
 msgid "Discuss idea %s"
 msgid_plural "Discuss ideas: %s"
-msgstr[0] "En lien avec l’idée %s"
-msgstr[1] "En lien avec les idées : %s"
+msgstr[0] "En lien avec le sujet %s"
+msgstr[1] "En lien avec les sujets : %s"
 
 #: assembl/static/js/app/views/postFilters.js:242
 #: assembl/static/js/app/views/postFilters.js:284
@@ -1660,11 +1660,11 @@ msgstr "Inclure seulement les messages qui répondent à une de mes contribution
 #: assembl/static/js/app/views/postFilters.js:485
 #: assembl/templates/views/orphanMessagesInIdeaList.tmpl:4
 msgid "Messages not yet associated with an idea"
-msgstr "Messages pas encore associés à une idée"
+msgstr "Messages pas encore associés à un sujet"
 
 #: assembl/static/js/app/views/postFilters.js:488
 msgid "Only include messages that are not found in any idea."
-msgstr "N’inclure que des messages qui ne se trouvent liés à aucune idée"
+msgstr "N’inclure que des messages qui ne se trouvent liés à aucun sujet"
 
 #: assembl/static/js/app/views/postFilters.js:508
 msgid "Synthesis messages"
@@ -1994,10 +1994,10 @@ msgid_plural ""
 "%d tokens \"%s\" were voted on this idea, out of a total %d \"%s\" tokens"
 " voted"
 msgstr[0] ""
-"%d jeton \"%s\" a été voté sur cette idée, sur un total de %d jetons "
+"%d jeton \"%s\" a été voté sur ce sujet, sur un total de %d jetons "
 "\"%s\" votés"
 msgstr[1] ""
-"%d jetons \"%s\" ont été votés sur cette idée, sur un total de %d jetons "
+"%d jetons \"%s\" ont été votés sur ce sujet, sur un total de %d jetons "
 "\"%s\" votés"
 
 #: assembl/static/js/app/views/tokenVoteSession.js:1089
@@ -2044,7 +2044,7 @@ msgid ""
 "Split your tokens among the ideas of your choice. By default, your vote "
 "is neutral per project."
 msgstr ""
-"Répartissez vos jetons parmi les idées de votre choix. Par défaut, votre "
+"Répartissez vos jetons parmi les sujets de votre choix. Par défaut, votre "
 "vote est neutre par projet."
 
 #: assembl/static/js/app/views/tokenVoteSession.js:1570
@@ -2162,7 +2162,7 @@ msgstr "Verrouiller le panneau"
 #: assembl/static/js/app/views/modals/ideaInModal.js:49
 #, python-format
 msgid "Exploring idea \"%s\""
-msgstr "Exploration de l’idée \"%s\""
+msgstr "Exploration du sujet \"%s\""
 
 #: assembl/static/js/app/views/user/account.js:200
 msgid "Empty email"
@@ -2263,7 +2263,7 @@ msgstr "Par"
 
 #: assembl/templates/idea_in_synthesis.jinja2:14
 msgid "See the conversation around this idea"
-msgstr "Voir la conversation autour de cette idée"
+msgstr "Voir la conversation autour de ce sujet"
 
 #: assembl/templates/login.jinja2:55
 #, python-format
@@ -2750,15 +2750,15 @@ msgid ""
 "\t</ol>"
 msgstr ""
 "<p>Voici comment participer à la discussion \"%(debate_name)s\":</p> <ul>"
-" <li>Explorez les échanges en naviguant sur les idées qui ont déjà "
+" <li>Explorez les échanges en naviguant sur les sujets qui ont déjà "
 "émergé</li> <li>Poursuivez le dialogue en répondant directement aux "
 "contributions des participants</li> <li>Lancez un nouveau sujet de "
-"discussion si vous souhaitez relancer les échanges sur une idée en "
+"discussion si vous souhaitez relancer les échanges sur un sujet en "
 "particulier</li> </ul> <p>Comment ça fonctionne:</p> <ol> <li>Au fur et à"
-" mesure que vous contribuez, des attrapeurs vont sélectionner les idées "
+" mesure que vous contribuez, des attrapeurs vont sélectionner les sujets "
 "clés de vos messages – Ils sont là pour s’assurer que vos contributions "
-"sont remarquées</li> <li>À partir de ces idées, ils vont réorganiser ces "
-"idées dans une table des matières des idées identifiées</li> </ol>"
+"sont remarquées</li> <li>À partir de ces sujets, ils vont réorganiser ces "
+"sujets dans une table des matières des sujets identifiés</li> </ol>"
 
 #: assembl/templates/views/about.tmpl:18
 msgid "Join the discussions"
@@ -3098,19 +3098,19 @@ msgid ""
 "message list for this idea."
 msgstr ""
 "Le texte de cette annonce. Sera affiché au-dessus de la liste des "
-"messages de cette idée."
+"messages de ce sujet."
 
 #: assembl/templates/views/announcementEditable.tmpl:7
 msgid ""
 "If checked, this announcement will also be shown for any sub-idea that "
 "doesn't have its own announcement."
 msgstr ""
-"Si coché, cette annonce sera aussi affichée pour toute sous-idée n’ayant "
+"Si coché, cette annonce sera aussi affichée pour tout sous-sujet n’ayant "
 "pas une annonce propre."
 
 #: assembl/templates/views/announcementEditable.tmpl:8
 msgid "Propagate this announcement to sub-ideas:"
-msgstr "Propager cette annonce aux sous-idées:"
+msgstr "Propager cette annonce aux sous-sujets:"
 
 #: assembl/templates/views/announcementEditable.tmpl:10
 msgid "Delete this announcement"
@@ -3118,7 +3118,7 @@ msgstr "Supprimer cette annonce"
 
 #: assembl/templates/views/announcementListEmptyEditable.tmpl:1
 msgid "Add a new announcement to this idea"
-msgstr "Ajouter une nouvelle annonce à cette idée"
+msgstr "Ajouter une nouvelle annonce à ce sujet"
 
 #: assembl/templates/views/announcementMessage.tmpl:10
 #: assembl/templates/views/message.tmpl:154
@@ -3182,11 +3182,11 @@ msgstr ""
 
 #: assembl/templates/views/bookmarket.tmpl:16
 msgid "Dig deeper in an existing idea"
-msgstr "Approfondir une idée existante"
+msgstr "Approfondir un sujet existant"
 
 #: assembl/templates/views/bookmarket.tmpl:17
 msgid "Bring supplementary information relative to an idea"
-msgstr "Apporter des informations complémentaires à une idée"
+msgstr "Apporter des informations complémentaires à un sujet"
 
 #: assembl/templates/views/bookmarket.tmpl:18
 msgid "Find new viewpoints and arguments"
@@ -3255,7 +3255,7 @@ msgstr "Autres panneaux :"
 #: assembl/templates/views/create-group.tmpl:61
 #: assembl/templates/views/create-group.tmpl:93
 msgid "Idea Panel"
-msgstr "Description de l’idée"
+msgstr "Description du sujet"
 
 #: assembl/templates/views/create-group.tmpl:71
 #: assembl/templates/views/create-group.tmpl:83
@@ -3515,7 +3515,7 @@ msgid ""
 "to the idea:"
 msgstr ""
 "<span class=\"harvester\">%s</span> a considéré ce message pertinent pour"
-" l’idée :"
+" le sujet :"
 
 #: assembl/templates/views/ideaClassification_directExtract.tmpl:7
 #: assembl/templates/views/ideaClassification_indirectExtract.tmpl:7
@@ -3535,7 +3535,7 @@ msgid ""
 "directly on the idea:"
 msgstr ""
 "<span class=\"author\">%s</span> a lancé un nouveau fil de discussion "
-"directement sur l’idée : "
+"directement sur le sujet : "
 
 #: assembl/templates/views/ideaClassification_indirectExtract.tmpl:3
 #, python-format
@@ -3544,7 +3544,7 @@ msgid ""
 "class=\"harvester\">%s</span> considered relevant to the idea:"
 msgstr ""
 "Ce message fait partie d’un fil de discussion, considéré pertinent par "
-"<span class=\"harvester\">%s</span> pour l’idée :"
+"<span class=\"harvester\">%s</span> pour le sujet :"
 
 #: assembl/templates/views/ideaClassification_indirectMessage.tmpl:3
 #, python-format
@@ -3553,7 +3553,7 @@ msgid ""
 "class=\"author\">%s</span> on the idea:"
 msgstr ""
 "Ce message fait partie d’un fil de discussion, lancé par <span "
-"class=\"author\">%s</span> sur l’idée :"
+"class=\"author\">%s</span> sur le sujet :"
 
 #: assembl/templates/views/ideaInIdeaList.tmpl:7
 msgid "Remove from next synthesis"
@@ -3565,11 +3565,11 @@ msgstr "Ajouter à la prochaine synthèse"
 
 #: assembl/templates/views/ideaInIdeaList.tmpl:45
 msgid "Number of messages related to this idea, or any of its sub-ideas"
-msgstr "Nombre de messages liés à cette idée ou à une de ses sous-idées"
+msgstr "Nombre de messages liés à ce sujet ou à un de ses sous-sujets"
 
 #: assembl/templates/views/ideaInIdeaList.tmpl:50
 msgid "This idea has been created recently"
-msgstr "Cette idée a été créée récemment"
+msgstr "Ce sujet a été créé récemment"
 
 #: assembl/templates/views/ideaInIdeaList.tmpl:50
 msgid "new!"
@@ -3577,27 +3577,27 @@ msgstr "nouveau !"
 
 #: assembl/templates/views/ideaInIdeaList.tmpl:55
 msgid "Number of unread messages related to this idea, or any of its sub-ideas"
-msgstr "Nombre de messages non-lus liés à cette idée ou à une de ses sous-idées"
+msgstr "Nombre de messages non-lus liés à ce sujet ou à un de ses sous-sujets"
 
 #: assembl/templates/views/ideaInIdeaList.tmpl:59
 msgid ""
 "Number of unread messages related to this idea, or any of its sub-ideas."
 "  Click on this number to view ONLY the new unread messages"
 msgstr ""
-"Nombre de messages non-lus liés à cette idée ou à une de ses sous-idées. "
+"Nombre de messages non-lus liés à ce sujet ou à un de ses sous-sujets. "
 "Cliquez sur ce nombre pour voir SEULEMENT les messages non-lus."
 
 #: assembl/templates/views/ideaInSynthesis.tmpl:14
 msgid "View conversation on this idea"
-msgstr "Voir la conversation autour de cette idée"
+msgstr "Voir la conversation autour de ce sujet"
 
 #: assembl/templates/views/ideaInSynthesis.tmpl:26
 msgid "View Idea in popup"
-msgstr "Voir l’idée dans une fenêtre modale"
+msgstr "Voir le sujet dans une fenêtre modale"
 
 #: assembl/templates/views/ideaList.tmpl:18
 msgid "Add idea"
-msgstr "Ajouter une idée"
+msgstr "Ajouter un sujet"
 
 #: assembl/templates/views/ideaList.tmpl:22
 msgid "Options"
@@ -3617,21 +3617,21 @@ msgstr "Activer/désactiver la taille de texte décroissante avec la profondeur"
 
 #: assembl/templates/views/ideaList.tmpl:27
 msgid "Expand all ideas"
-msgstr "Déployer toutes les idées"
+msgstr "Déployer tous les sujets"
 
 #: assembl/templates/views/ideaList.tmpl:28
 msgid "Collapse all ideas"
-msgstr "Replier toutes les idées"
+msgstr "Replier tous les sujets"
 
 #: assembl/templates/views/ideaList.tmpl:30
 msgid "Save the current expanded/collapsed state as default for users"
 msgstr ""
-"Enregistrer la vue de votre table des idées par défaut pour les "
+"Enregistrer la vue de votre table des sujets par défaut pour les "
 "participants"
 
 #: assembl/templates/views/ideaList.tmpl:32
 msgid "Restore default expanded/collapsed state"
-msgstr "Revenir à la vue par défaut de la table des idées"
+msgstr "Revenir à la vue par défaut de la table des sujets"
 
 #: assembl/templates/views/ideaPanel.tmpl:2
 #: assembl/templates/views/message.tmpl:25
@@ -3640,7 +3640,7 @@ msgstr "Partager"
 
 #: assembl/templates/views/ideaPanel.tmpl:12
 msgid "The name of this idea in the table of ideas"
-msgstr "Nom de cette idée dans la table des idées"
+msgstr "Nom de ce sujet dans la table des sujets"
 
 #: assembl/templates/views/ideaPanel.tmpl:20
 msgid "Voting session"
@@ -3659,20 +3659,20 @@ msgid ""
 "Expression of this idea in the next synthesis.  You may want to edit them"
 " all together in the synthesis panel rather than here."
 msgstr ""
-"Expression de cette idée dans la prochaine synthèse.  Vous voudrez "
+"Expression de ce sujet dans la prochaine synthèse.  Vous voudrez "
 "peut-être éditer ces expressions ensemble dans le panneau de synthèse."
 
 #: assembl/templates/views/ideaPanel.tmpl:40
 msgid "Description of this idea"
-msgstr "Description de cette idée"
+msgstr "Description de ce sujet"
 
 #: assembl/templates/views/ideaPanel.tmpl:43
 msgid "A description of this idea"
-msgstr "Une description de cette idée"
+msgstr "Une description de ce sujet"
 
 #: assembl/templates/views/ideaPanel.tmpl:48
 msgid "Announcement for this idea"
-msgstr "Annonce pour cette idée"
+msgstr "Annonce pour ce sujet"
 
 #: assembl/templates/views/ideaPanel.tmpl:67
 msgid ""
@@ -3680,16 +3680,16 @@ msgid ""
 "sub-ideas."
 msgstr ""
 "Nombre de participants qui ont contribué des messages à propos de cette "
-"idée ou ses sous-idées"
+"sujet ou ses sous-sujets"
 
 #: assembl/templates/views/ideaPanel.tmpl:86
 msgid "Expressions of this idea in messages or on the web"
-msgstr "Expressions de cette idée dans des messages ou des pages Web"
+msgstr "Expressions de ce sujet dans des messages ou des pages Web"
 
 #: assembl/templates/views/ideaPanel.tmpl:91
 msgid "Nuggets are important expressions of this idea in messages or on the web"
 msgstr ""
-"Les pépites sont des expressions importantes de cette idée dans des "
+"Les pépites sont des expressions importantes de ce sujet dans des "
 "messages ou des pages Web"
 
 #: assembl/templates/views/ideaPanel.tmpl:99
@@ -3703,7 +3703,7 @@ msgid ""
 "Remove all extracts from this idea.  Removed extracts will be available "
 "in your clipboard"
 msgstr ""
-"Enlever tous les extraits de cette idée.  Les extraits supprimés seront "
+"Enlever tous les extraits de ce sujet.  Les extraits supprimés seront "
 "disponibles dans votre presse-papier"
 
 #: assembl/templates/views/ideaPanel.tmpl:109
@@ -3712,15 +3712,15 @@ msgstr "Supprimer tous les extraits"
 
 #: assembl/templates/views/ideaPanel.tmpl:114
 msgid "Delete this idea completely"
-msgstr "Supprimer cette idée complètement"
+msgstr "Supprimer ce sujet complètement"
 
 #: assembl/templates/views/ideaPanel.tmpl:114
 msgid "Delete idea"
-msgstr "Supprimer l’idée"
+msgstr "Supprimer le sujet"
 
 #: assembl/templates/views/ideaPanel.tmpl:118
 msgid "Define a multi-column message view on this idea"
-msgstr "Créer une vue de messages multi-colonnes sur cette idée"
+msgstr "Créer une vue de messages multi-colonnes sur ce sujet"
 
 #: assembl/templates/views/ideaPanel.tmpl:118
 msgid "Define column view"
@@ -3728,14 +3728,14 @@ msgstr "Définir la vue par colonnes"
 
 #: assembl/templates/views/ideaPanel.tmpl:130
 msgid "No idea selected"
-msgstr "Aucune idée sélectionnée"
+msgstr "Aucun sujet sélectionné"
 
 #: assembl/templates/views/ideaPanel.tmpl:131
 msgid ""
 "Choose an idea in the Table of ideas to explore the discussion or close "
 "this panel as you will have open"
 msgstr ""
-"Choisissez une idée dans la Table des idées pour explorer la discussion "
+"Choisissez un sujet dans la Table des sujets pour explorer la discussion "
 "ou fermez ce panneau de la même manière que vous l’avez ouvert."
 
 #: assembl/templates/views/instigator.tmpl:6
@@ -3962,7 +3962,7 @@ msgstr "Votre message sera posté :"
 #: assembl/templates/views/messageSend.tmpl:29
 #, python-format
 msgid "Under the idea \"%s\""
-msgstr "Sur l’idée \"%s\""
+msgstr "Sur le sujet \"%s\""
 
 #: assembl/templates/views/messageSend.tmpl:31
 #, python-format
@@ -3972,8 +3972,8 @@ msgid ""
 "a new idea)"
 msgstr ""
 "Dans la conversation générale \"%s\" (un animateur de communauté "
-"organisera votre contribution dans la table des idées par la suite, "
-"éventuellement en créant une nouvelle idée)"
+"organisera votre contribution dans la table des sujets par la suite, "
+"éventuellement en créant un nouveau sujet)"
 
 #: assembl/templates/views/messageSend.tmpl:33
 msgid "Your message will be posted as a child of the previous message."
@@ -4045,7 +4045,7 @@ msgid ""
 "idea"
 msgstr ""
 "Les messages qui ont été publiés à la racine de la discussion et dont "
-"l’enfilade n’a pas encore été associée à une idée."
+"l’enfilade n’a pas encore été associée à un sujet."
 
 #: assembl/templates/views/orphanMessagesInIdeaList.tmpl:9
 msgid "Messages yet to be organised"
@@ -4053,7 +4053,7 @@ msgstr "Messages à organiser"
 
 #: assembl/templates/views/otherInIdeaList.tmpl:2
 msgid "Messages not in the table of ideas"
-msgstr "Messages absents de la table des idées"
+msgstr "Messages absents de la table des sujets"
 
 #: assembl/templates/views/panelWrapper.tmpl:16
 msgid "Fullsize"
@@ -4159,7 +4159,7 @@ msgstr "cliquez ici pour activer l’annotation Web."
 
 #: assembl/templates/views/segmentList.tmpl:9
 msgid "Extracts not yet associated with an idea"
-msgstr "Extraits non associés à une idée"
+msgstr "Extraits non associés à un sujet"
 
 #: assembl/templates/views/segmentList.tmpl:14
 msgid "Clear"
@@ -4170,7 +4170,7 @@ msgid ""
 "You will be redirected to another idea in connection with the nugget on "
 "which you clicked."
 msgstr ""
-"Vous serez redirigé vers une autre idée en lien avec l’extrait sur lequel"
+"Vous serez redirigé vers un autre sujet en lien avec l’extrait sur lequel"
 " vous venez de cliquer."
 
 #: assembl/templates/views/showSegmentByAnnotation.tmpl:10
@@ -4228,7 +4228,7 @@ msgstr "Publier"
 #: assembl/templates/views/tokenVoteCollection.tmpl:4
 #, python-format
 msgid "Ideas (%s)"
-msgstr "Idées (%s)"
+msgstr "Sujets (%s)"
 
 #: assembl/templates/views/tokenVoteCollection.tmpl:5
 msgid "Your votes"
@@ -4236,7 +4236,7 @@ msgstr "Vos votes"
 
 #: assembl/templates/views/tokenVoteResultCollectionView.tmpl:4
 msgid "Ideas"
-msgstr "Idées"
+msgstr "Sujets"
 
 #: assembl/templates/views/tokenVoteResultView.tmpl:7
 msgid "Vote Summary"
@@ -4328,7 +4328,7 @@ msgstr "Aucune discussion trouvée avec l’id=%s"
 #: assembl/views/api/post.py:232
 msgid "Getting orphan posts of a specific idea isn't supported."
 msgstr ""
-"Il n’est pas possible d’obtenir les messages orphelins d’une idée "
+"Il n’est pas possible d’obtenir les messages orphelins d’un sujet "
 "spécifique."
 
 #: assembl/views/api/post.py:327
