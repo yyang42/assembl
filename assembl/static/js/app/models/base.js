@@ -11,6 +11,18 @@ var Backbone = require('backbone'),
     _ = require('underscore'),
     Types = require('../utils/types.js');
 
+
+_.oldIsEqual = _.isEqual;
+_.isEqual = function(a, b, aStack, bStack) {
+  if (_.isObject(a) && a.isEqualTo !== undefined) {
+    return a.isEqualTo(b);
+  } else {
+    return _.oldIsEqual(a, b, aStack, bStack);
+  }
+};
+
+
+
 /**
   * BaseModel which should be used by ALL models
   * @class app.models.base.BaseModel
@@ -204,8 +216,30 @@ var BaseModel = Backbone.Model.extend({
         Ctx.getAbsoluteURLFromDiscussionRelativeURL(relPath),
         params
       );
-  }
+  },
 
+  isEqualTo: function(other) {
+    if (other instanceof this.constructor &&
+        other.constructor !== undefined && this instanceof other.constructor) {
+      var a = this.attributes, b = other.attributes,
+          // code lifted from underscore.eq
+          // Here we have lost the recursive stack, so there is a risk of being stuck in a loop.
+          // But using isEqual instead of eq allows the monkey-patch to be applied.
+          // Ensure that both objects contain the same number of properties before comparing deep equality.
+          // Note: Fails with message.extracts, which is a json Array, and order matters.
+          keys = _.keys(a), key,
+          length = keys.length;
+      if (_.keys(b).length !== length) return false;
+      while (length--) {
+        // Deep compare each member
+        key = keys[length];
+        if (!(_.has(b, key) && _.isEqual(a[key], b[key]))) return false;
+      }
+      return true;
+    } else {
+      return _.oldIsEqual(this, other);
+    }
+  },
 });
 
 /**
@@ -337,7 +371,24 @@ var BaseCollection = Backbone.Collection.extend({
     if (debug) {
       console.log("updateFromSocket(): collection is now:", this);
     }
-  }
+  },
+
+  isEqualTo: function(other) {
+    if (other instanceof this.constructor && this instanceof other.constructor) {
+      if (this.models.length !== other.models.length) {
+        return false;
+      }
+      return this.models.find(function(model) {
+        var otherModel = other.get(model.id);
+        if (otherModel == null) {
+          return true;
+        }
+        return !model.isEqualTo(otherModel);
+      }) === undefined;
+    } else {
+      return _.oldIsEqual(this, other);
+    }
+  },
 
 });
 
