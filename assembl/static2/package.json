@@ -46,6 +46,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "lodash": "^4.17.4",
     "react": "^15.4.1",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.1",
@@ -54,6 +55,6 @@
     "react-router": "^3.0.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
-    "searchkit": "^1.0.0-0"
+    "searchkit": "1.0.0-0"
   }
 }
