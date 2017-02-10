@@ -2,10 +2,13 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: './js/app/index',
+    entry: {
+        bundle: ['./js/app/index'],
+        searchv1: ['./js/app/searchv1']
+    },
     output: {
         path: path.join(__dirname, 'build'),
-        filename: 'bundle.js',
+        filename: '[name].js',
         publicPath: '/build/'
     },
     module: {
