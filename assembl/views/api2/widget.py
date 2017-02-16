@@ -1,7 +1,8 @@
 from simplejson import loads
 
 from pyramid.view import view_config
-from pyramid.security import authenticated_userid, Everyone
+from pyramid.security import (
+    authenticated_userid, Everyone, NO_PERMISSION_REQUIRED)
 from pyramid.httpexceptions import (
     HTTPOk, HTTPNoContent, HTTPNotFound, HTTPUnauthorized)
 
@@ -52,7 +53,8 @@ def widget_view(request):
 
 
 @view_config(context=InstanceContext, request_method='PUT', header=FORM_HEADER,
-             ctx_instance_class=Widget, accept="application/json")
+             ctx_instance_class=Widget, accept="application/json",
+             permission=NO_PERMISSION_REQUIRED)
 def widget_instance_put(request):
     # IF_OWNED not applicable for widgets... so far
     ctx = request.context
@@ -75,7 +77,7 @@ def widget_instance_put(request):
 @view_config(context=InstanceContext, request_method='GET',
              ctx_instance_class=Widget, permission=P_READ,
              accept="application/json", name="user_state",
-             renderer='json')
+             renderer='json', permission=NO_PERMISSION_REQUIRED)
 def widget_userstate_get(request):
     user_id = authenticated_userid(request)
     if not user_id:
