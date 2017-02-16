@@ -19,7 +19,11 @@ const Translations = {
       post: 'Discussions',
       idea: 'Idées',
       user: 'Communauté',
-      synthesis: 'Synthèse'
+      synthesis: 'Synthèse',
+      'Sort:': 'Trier :',
+      'By relevance': 'Par pertinence',
+      'More recent first': 'Du plus récent au plus ancien',
+      'Oldest first': 'Du plus ancien au plus récent'
     },
     navbar: {
       home: 'accueil',
@@ -111,7 +115,11 @@ const Translations = {
       post: 'Discussions',
       idea: 'Ideas',
       user: 'Community',
-      synthesis: 'Synthesis'
+      synthesis: 'Synthesis',
+      'Sort:': 'Sort:',
+      'By relevance': 'By relevance',
+      'More recent first': 'More recent first',
+      'Oldest first': 'Oldest first'
     },
     navbar: {
       home: 'home',
@@ -203,7 +211,11 @@ const Translations = {
       post: 'Discussions',
       idea: 'Ideas',
       user: 'Community',
-      synthesis: 'Synthesis'
+      synthesis: 'Synthesis',
+      'Sort:': 'Sort:',
+      'By relevance': 'By relevance',
+      'More recent first': 'More recent first',
+      'Oldest first': 'Oldest first',
     },
     navbar: {
       home: 'willkommen',
