@@ -1,5 +1,6 @@
 from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPOk
+from pyramid.security import NO_PERMISSION_REQUIRED
 
 from assembl.models import IdeaMessageColumn
 from ..traversal import InstanceContext, CollectionContext
@@ -10,7 +11,7 @@ from . import (
 
 @view_config(
     context=InstanceContext, request_method='DELETE', renderer='json',
-    ctx_instance_class=IdeaMessageColumn)
+    ctx_instance_class=IdeaMessageColumn, permission=NO_PERMISSION_REQUIRED)
 def column_del(request):
     """Delete a column and adjust the next column's previous_column_id"""
     ctx = request.context
@@ -28,7 +29,8 @@ def column_del(request):
 
 @view_config(
     context=InstanceContext, request_method='POST', renderer='json',
-    ctx_instance_class=IdeaMessageColumn, name="reorder_up")
+    ctx_instance_class=IdeaMessageColumn, name="reorder_up",
+    permission=NO_PERMISSION_REQUIRED)
 def column_reorder_up(request):
     """Switch this column with the previous column
     and adjust the next column's previous_column_id"""

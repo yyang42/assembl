@@ -6,7 +6,8 @@ from pyramid.view import view_config
 from pyramid.response import Response
 from pyramid.renderers import render_to_response
 from pyramid.settings import asbool
-from pyramid.security import authenticated_userid, Everyone
+from pyramid.security import (
+    authenticated_userid, Everyone, NO_PERMISSION_REQUIRED)
 from pyramid.httpexceptions import (
     HTTPNotFound, HTTPSeeOther)
 from pyramid.i18n import TranslationStringFactory
@@ -67,7 +68,7 @@ def get_styleguide_components():
     return views
 
 
-@view_config(route_name='home', request_method='GET', http_cache=60)
+@view_config(route_name='home', request_method='GET', http_cache=60, permission=P_READ)
 def home_view(request):
     """The main view on a discussion"""
     user_id = authenticated_userid(request) or Everyone
@@ -192,7 +193,8 @@ def react_view(request):
 
 
 @view_config(route_name='styleguide', request_method='GET', http_cache=60,
-             renderer='assembl:templates/styleguide/index.jinja2')
+             renderer='assembl:templates/styleguide/index.jinja2',
+             permission=NO_PERMISSION_REQUIRED)
 def styleguide_view(request):
     context = get_default_context(request)
     context['styleguide_views'] = get_styleguide_components()
@@ -200,7 +202,8 @@ def styleguide_view(request):
 
 
 @view_config(route_name='test', request_method='GET', http_cache=60,
-             renderer='assembl:templates/tests/index.jinja2')
+             renderer='assembl:templates/tests/index.jinja2',
+             permission=NO_PERMISSION_REQUIRED)
 def frontend_test_view(request):
     context = get_default_context(request)
     discussion = context["discussion"]
@@ -213,7 +216,8 @@ def frontend_test_view(request):
     return context
 
 
-@view_config(context=HTTPNotFound, renderer='assembl:templates/includes/404.jinja2')
+@view_config(context=HTTPNotFound, renderer='assembl:templates/includes/404.jinja2',
+             permission=NO_PERMISSION_REQUIRED)
 def not_found(context, request):
     request.response.status = 404
     return {}

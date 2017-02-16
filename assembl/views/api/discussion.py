@@ -2,7 +2,8 @@
 import json
 
 from pyramid.httpexceptions import HTTPNotFound, HTTPUnauthorized, HTTPNoContent
-from pyramid.security import authenticated_userid, Everyone, Authenticated
+from pyramid.security import (
+    authenticated_userid, Everyone, Authenticated, NO_PERMISSION_REQUIRED)
 
 from cornice import Service
 
@@ -37,7 +38,7 @@ etalab_discussion = Service(
 )
 
 
-@etalab_discussions.get()
+@etalab_discussions.get(permission=NO_PERMISSION_REQUIRED)
 def etalab_get_discussions(request):
     # According to the Etalab API specification, an Instance object must have the following fields:
     # - url: we send discussion.get_url(). Note: a discussion may have 2 URLs (HTTP and HTTPS). For this, see discussion.get_discussion_urls()

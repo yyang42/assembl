@@ -158,10 +158,12 @@ def get_social_autologin(request, discussion=None, next_view=None):
 @view_config(
     route_name='logout', request_method='GET',
     renderer='assembl:templates/login.jinja2',
+    permission=NO_PERMISSION_REQUIRED
 )
 @view_config(
     route_name='contextual_logout', request_method='GET',
     renderer='assembl:templates/login.jinja2',
+    permission=NO_PERMISSION_REQUIRED
 )
 def logout(request):
     forget(request)
@@ -173,21 +175,25 @@ def logout(request):
     route_name='login',
     request_method='GET', http_cache=60,
     renderer='assembl:templates/login.jinja2',
+    permission=NO_PERMISSION_REQUIRED,
 )
 @view_config(
     route_name='contextual_login',
     request_method='GET', http_cache=60,
     renderer='assembl:templates/login.jinja2',
+    permission=NO_PERMISSION_REQUIRED,
 )
 @view_config(
     route_name='login_forceproviders',
     request_method='GET', http_cache=60,
     renderer='assembl:templates/login.jinja2',
+    permission=NO_PERMISSION_REQUIRED,
 )
 @view_config(
     route_name='contextual_login_forceproviders',
     request_method='GET', http_cache=60,
     renderer='assembl:templates/login.jinja2',
+    permission=NO_PERMISSION_REQUIRED,
 )
 def login_view(request):
     if request.scheme == "http"\
@@ -238,7 +244,8 @@ def get_profile(request):
     return profile
 
 
-@view_config(route_name='profile_user', request_method=("GET", "POST"))
+@view_config(route_name='profile_user', request_method=("GET", "POST"),
+             permission=NO_PERMISSION_REQUIRED)
 def assembl_profile(request):
     session = AgentProfile.default_db
     localizer = request.localizer
@@ -324,7 +331,8 @@ def assembl_profile(request):
              user=session.query(User).get(logged_in)))
 
 
-@view_config(route_name='avatar', request_method="GET")
+@view_config(route_name='avatar', request_method="GET",
+             permission=NO_PERMISSION_REQUIRED)
 def avatar(request):
     profile = get_profile(request)
     size = int(request.matchdict.get('size'))
@@ -435,7 +443,7 @@ def assembl_register_view(request):
         request, 'confirm_emailid_sent', email_account_id=email_account.id))
 
 
-@view_config(context=SMTPRecipientsRefused)
+@view_config(context=SMTPRecipientsRefused, permission=NO_PERMISSION_REQUIRED)
 def smtp_error_view(exc, request):
     path_info = request.environ['PATH_INFO']
     localizer = request.localizer
@@ -519,7 +527,8 @@ def assembl_login_complete_view(request):
     return HTTPFound(location=next_view)
 
 
-@view_config(route_name="contextual_social_auth", request_method=('GET', 'POST'))
+@view_config(route_name="contextual_social_auth", request_method=('GET', 'POST'),
+             permission=NO_PERMISSION_REQUIRED)
 @psa('social.complete')
 def auth(request):
     request.session['discussion'] = request.matchdict['discussion_slug']
@@ -527,9 +536,11 @@ def auth(request):
     return do_auth(request.backend, redirect_name='next')
 
 
-@view_config(route_name="add_social_account", request_method=('GET', 'POST'))
+@view_config(route_name="add_social_account", request_method=('GET', 'POST'),
+             permission=NO_PERMISSION_REQUIRED)
 @view_config(
-    route_name="contextual_add_social_account", request_method=('GET', 'POST'))
+    route_name="contextual_add_social_account", request_method=('GET', 'POST'),
+    permission=NO_PERMISSION_REQUIRED)
 @psa('social.complete')
 def add_social_account(request):
     request.session['discussion'] = request.matchdict['discussion_slug']
@@ -707,6 +718,7 @@ def user_confirm_email(request):
 @view_config(
     context=AuthException,  # maybe more specific?
     renderer='assembl:templates/login.jinja2',
+    permission=NO_PERMISSION_REQUIRED
 )
 def login_denied_view(request):
     localizer = request.localizer

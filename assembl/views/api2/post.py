@@ -3,7 +3,7 @@ from datetime import datetime
 from pyramid.view import view_config
 from pyramid.response import Response
 from pyramid.httpexceptions import HTTPUnauthorized, HTTPBadRequest
-from pyramid.security import authenticated_userid
+from pyramid.security import authenticated_userid, NO_PERMISSION_REQUIRED
 
 from assembl.auth import P_READ, P_MODERATE, P_DELETE_POST, P_DELETE_MY_POST
 from assembl.auth.util import get_permissions
@@ -40,7 +40,8 @@ def show_similar_posts(request):
 
 
 @view_config(context=InstanceContext, request_method='DELETE',
-    ctx_instance_class=Post, renderer='json')
+             ctx_instance_class=Post, renderer='json',
+             permission=NO_PERMISSION_REQUIRED)
 def delete_post_instance(request):
     # Users who are allowed to delete (actually tombstone) a Post instance:
     # - user who is the author of the Post instance and who has the P_DELETE_MY_POST permission in this discussion
@@ -114,10 +115,10 @@ def raise_if_cannot_moderate(request):
 
 @view_config(
     context=InstanceContext, request_method='PATCH', ctx_instance_class=Post,
-    header=JSON_HEADER, renderer='json')
+    header=JSON_HEADER, renderer='json', permission=NO_PERMISSION_REQUIRED)
 @view_config(
     context=InstanceContext, request_method='PUT', ctx_instance_class=Post,
-    header=JSON_HEADER, renderer='json')
+    header=JSON_HEADER, renderer='json', permission=NO_PERMISSION_REQUIRED)
 def post_put_json(request):
     json_data = request.json_body
     if has_moderation(json_data):
@@ -130,10 +131,10 @@ def post_put_json(request):
 
 @view_config(
     context=InstanceContext, request_method='PATCH', ctx_instance_class=Post,
-    header=FORM_HEADER, renderer='json')
+    header=FORM_HEADER, renderer='json', permission=NO_PERMISSION_REQUIRED)
 @view_config(
     context=InstanceContext, request_method='PUT', ctx_instance_class=Post,
-    header=FORM_HEADER, renderer='json')
+    header=FORM_HEADER, renderer='json', permission=NO_PERMISSION_REQUIRED)
 def post_put(request):
     form_data = request.params
     if has_moderation(form_data):
@@ -147,7 +148,8 @@ def post_put(request):
 
 @view_config(
     context=CollectionContext, request_method='POST',
-    ctx_collection_class=Post, header=FORM_HEADER, renderer='json')
+    ctx_collection_class=Post, header=FORM_HEADER, renderer='json',
+    permission=NO_PERMISSION_REQUIRED)
 def add_post_form(request):
     if has_moderation(request.params):
         raise HTTPBadRequest("Cannot moderate at post creation")
@@ -156,7 +158,8 @@ def add_post_form(request):
 
 @view_config(
     context=CollectionContext, request_method='POST',
-    ctx_collection_class=Post, header=JSON_HEADER, renderer='json')
+    ctx_collection_class=Post, header=JSON_HEADER, renderer='json',
+    permission=NO_PERMISSION_REQUIRED)
 def add_post_json(request):
     if has_moderation(request.json):
         raise HTTPBadRequest("Cannot moderate at post creation")

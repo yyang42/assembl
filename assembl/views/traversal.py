@@ -47,7 +47,7 @@ ACL_RESTRICTIVE = [(Allow, R_SYSADMIN, ALL_PERMISSIONS), DENY_ALL]
 class AppRoot(DictContext):
     """The root context. Anything not defined by a root comes here."""
     def __init__(self):
-        super(AppRoot, self).__init__(ACL_READABLE, {
+        super(AppRoot, self).__init__(ACL_RESTRICTIVE, {
             'data': Api2Context(self, ACL_RESTRICTIVE),
             'admin': DictContext(ACL_RESTRICTIVE, {
                 'permissions': DictContext(None, {
@@ -73,9 +73,16 @@ class AppRoot(DictContext):
 
 class DiscussionsContext(object):
     """A context where discussions, named by id, are sub-contexts"""
+    __acl__ = ACL_READABLE
     def __getitem__(self, key):
         from assembl.models import Discussion
-        discussion = Discussion.get(int(key))
+        try:
+            discussion = Discussion.get(int(key))
+        except ValueError:
+            raise KeyError()
+            # TODO: allow slug use?
+            # discussion = Discussion.default_db.query(
+            #   Discussion).filter_by(slug=key).first()
         if not discussion:
             raise KeyError()
         return discussion

@@ -31,7 +31,8 @@ from pyramid.httpexceptions import (
     HTTPOk, HTTPBadRequest, HTTPUnauthorized, HTTPNotAcceptable, HTTPFound,
     HTTPServerError)
 from pyramid_dogpile_cache import get_region
-from pyramid.security import authenticated_userid, Everyone
+from pyramid.security import (
+    authenticated_userid, Everyone, NO_PERMISSION_REQUIRED)
 from pyramid.renderers import JSONP_VALID_CALLBACK
 from pyramid.settings import asbool
 from pyramid_mailer import get_mailer
@@ -166,7 +167,8 @@ def permission_token(
 
 @view_config(context=InstanceContext, name="perm_token",
              ctx_instance_class=Discussion, request_method='GET',
-             accept="application/ld+json", renderer="json")
+             accept="application/ld+json", renderer="json",
+             permission=NO_PERMISSION_REQUIRED)
 def get_token(request):
     user_id = authenticated_userid(request)
     if not user_id:
@@ -199,10 +201,12 @@ def get_token(request):
 
 @view_config(context=InstanceContext, name="jsonld",
              ctx_instance_class=Discussion, request_method='GET',
-             accept="application/ld+json")
+             accept="application/ld+json",
+             permission=NO_PERMISSION_REQUIRED)
 @view_config(context=InstanceContext,
              ctx_instance_class=Discussion, request_method='GET',
-             accept="application/ld+json")
+             accept="application/ld+json",
+             permission=NO_PERMISSION_REQUIRED)
 def discussion_instance_view_jsonld(request):
     discussion = request.context._instance
     user_id, permissions, salt = read_user_token(request)
@@ -228,7 +232,8 @@ def discussion_instance_view_jsonld(request):
 
 @view_config(context=InstanceContext, name="private_jsonld",
              ctx_instance_class=Discussion, request_method='GET',
-             accept="application/ld+json")
+             accept="application/ld+json",
+             permission=NO_PERMISSION_REQUIRED)
 def user_private_view_jsonld(request):
     if request.scheme == "http" and asbool(request.registry.settings.get(
             'accept_secure_connection', False)):

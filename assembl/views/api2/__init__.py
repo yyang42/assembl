@@ -45,7 +45,7 @@ from sqlalchemy import inspect
 from pyramid.view import view_config
 from pyramid.httpexceptions import (
     HTTPBadRequest, HTTPNotImplemented, HTTPUnauthorized, HTTPNotFound)
-from pyramid.security import authenticated_userid, Everyone
+from pyramid.security import authenticated_userid, Everyone, NO_PERMISSION_REQUIRED
 from pyramid.response import Response
 from pyramid.settings import asbool
 from simplejson import dumps
@@ -148,7 +148,8 @@ def instance_view_jsonld(request):
 
 
 @view_config(context=InstanceContext, renderer='json',
-             request_method='GET', accept="application/json")
+             request_method='GET', accept="application/json",
+             permission=NO_PERMISSION_REQUIRED)
 def instance_view(request):
     ctx = request.context
     user_id = authenticated_userid(request) or Everyone
@@ -163,7 +164,7 @@ def instance_view(request):
 
 
 @view_config(context=CollectionContext, renderer='json',
-             request_method='GET')
+             request_method='GET', permission=NO_PERMISSION_REQUIRED)
 def collection_view(request, default_view='default'):
     ctx = request.context
     user_id = authenticated_userid(request) or Everyone
@@ -216,18 +217,19 @@ def collection_add(request, args):
 
 
 @view_config(context=CollectionContext, request_method='POST',
-             header=FORM_HEADER)
+             header=FORM_HEADER, permission=NO_PERMISSION_REQUIRED)
 def collection_add_with_params(request):
     return collection_add(request, request.params)
 
 
-@view_config(context=InstanceContext, request_method='POST')
+@view_config(context=InstanceContext, request_method='POST',
+             permission=NO_PERMISSION_REQUIRED)
 def instance_post(request):
     raise HTTPBadRequest()
 
 
-@view_config(context=InstanceContext, request_method=('PATCH', 'PUT'), header=JSON_HEADER,
-             renderer='json')
+@view_config(context=InstanceContext, request_method=('PATCH', 'PUT'),
+             header=JSON_HEADER, permission=NO_PERMISSION_REQUIRED, renderer='json')
 def instance_put_json(request, json_data=None):
     json_data = json_data or request.json_body
     ctx = request.context
@@ -301,7 +303,7 @@ def update_from_form(instance, form_data=None):
 
 
 @view_config(context=InstanceContext, request_method='PUT', header=FORM_HEADER,
-             renderer='json')
+             renderer='json', permission=NO_PERMISSION_REQUIRED)
 def instance_put_form(request, form_data=None):
     form_data = form_data or request.params
     ctx = request.context
@@ -319,7 +321,8 @@ def instance_put_form(request, form_data=None):
         return instance.generic_json(view, user_id, permissions)
 
 
-@view_config(context=InstanceContext, request_method='DELETE', renderer='json')
+@view_config(context=InstanceContext, request_method='DELETE', renderer='json',
+             permission=NO_PERMISSION_REQUIRED)
 def instance_del(request):
     ctx = request.context
     user_id = authenticated_userid(request) or Everyone

@@ -16,7 +16,8 @@ from pyramid.httpexceptions import (
     HTTPException, HTTPInternalServerError, HTTPMovedPermanently,
     HTTPBadRequest, HTTPFound, HTTPTemporaryRedirect as HTTPTemporaryRedirectP)
 from pyramid.i18n import TranslationStringFactory
-from pyramid.security import authenticated_userid, Everyone
+from pyramid.security import (
+    authenticated_userid, Everyone, NO_PERMISSION_REQUIRED)
 from pyramid.settings import asbool, aslist
 from social.exceptions import AuthMissingParameter
 
@@ -348,8 +349,14 @@ class JSONError(HTTPException):
             return r
 
 
+@view_config(route_name='test_no_perm')
+def test_no_perm(request):
+    """nobody should see this view, since permissions were not set."""
+    return Response("failure!")
+
+
 # TODO social_auth: Test the heck out of this.
-@view_config(context=AuthMissingParameter)
+@view_config(context=AuthMissingParameter, permission=NO_PERMISSION_REQUIRED)
 def csrf_error_view(exc, request):
     if "HTTP_COOKIE" not in request.environ:
         user_agent = request.user_agent
@@ -417,6 +424,8 @@ def includeme(config):
         config.add_route('default_disc_redirect', '/')
     else:
         config.add_route('discussion_list', '/')
+
+    config.add_route('test_no_perm', '/test_no_perm')
 
     if is_using_new_frontend():
         config.include('.discussion')  # this is first for new front-end routes

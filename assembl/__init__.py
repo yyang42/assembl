@@ -20,6 +20,7 @@ import transaction
 from pyramid.config import Configurator
 from pyramid.authentication import SessionAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
+from pyramid.interfaces import IDefaultPermission
 from pyramid_beaker import session_factory_from_settings
 from pyramid.settings import asbool
 from pyramid.path import DottedNameResolver
@@ -55,7 +56,11 @@ def main(global_config, **settings):
         signals.listen()
 
     from views.traversal import root_factory
-    config = Configurator(registry=getGlobalSiteManager())
+    registry = getGlobalSiteManager()
+    # Give an unobtainable permission as default;
+    # so failure to set permissions on a view will be treated as denied.
+    registry.registerUtility("no_permission", IDefaultPermission)
+    config = Configurator(registry)
     config.setup_registry(settings=settings, root_factory=root_factory)
     config.add_translation_dirs('assembl:locale/')
 

@@ -3,7 +3,8 @@ from string import Template
 
 from pyramid.response import Response
 from pyramid.view import view_config
-from pyramid.security import authenticated_userid, Everyone
+from pyramid.security import (
+    authenticated_userid, Everyone, NO_PERMISSION_REQUIRED)
 from pyramid.httpexceptions import (
     HTTPNotFound, HTTPUnauthorized, HTTPBadRequest, HTTPClientError,
     HTTPOk, HTTPNoContent, HTTPForbidden, HTTPNotImplemented)
@@ -25,13 +26,13 @@ from assembl.lib.sqla import ObjectNotUniqueError
 
 @view_config(
     context=ClassContext, request_method="PATCH",
-    ctx_class=LocalUserRole)
+    ctx_class=LocalUserRole, permission=NO_PERMISSION_REQUIRED)
 @view_config(
     context=ClassContext, request_method="PUT",
-    ctx_class=LocalUserRole)
+    ctx_class=LocalUserRole, permission=NO_PERMISSION_REQUIRED)
 @view_config(
     context=ClassContext, request_method="POST",
-    ctx_class=LocalUserRole)
+    ctx_class=LocalUserRole, permission=NO_PERMISSION_REQUIRED)
 def add_local_role_on_class(request):
     # Did not securize this route, so forbid it.
     raise HTTPNotFound()
@@ -40,11 +41,13 @@ def add_local_role_on_class(request):
 @view_config(
     context=CollectionContext, request_method="POST",
     ctx_named_collection="Discussion.local_user_roles",
-    header=JSON_HEADER, renderer='json')
+    header=JSON_HEADER, renderer='json',
+    permission=NO_PERMISSION_REQUIRED)
 @view_config(
     context=CollectionContext, request_method="POST",
     ctx_named_collection="LocalRoleCollection.local_roles",
-    header=JSON_HEADER, renderer='json')
+    header=JSON_HEADER, renderer='json',
+    permission=NO_PERMISSION_REQUIRED)
 def add_local_role(request):
     # Do not use check_permissions, this is a special case
     ctx = request.context
@@ -106,19 +109,19 @@ def add_local_role(request):
 @view_config(
     context=InstanceContext, request_method="PATCH",
     ctx_named_collection_instance="Discussion.local_user_roles",
-    header=JSON_HEADER, renderer='json')
+    permission=NO_PERMISSION_REQUIRED, header=JSON_HEADER, renderer='json')
 @view_config(
     context=InstanceContext, request_method="PATCH",
     ctx_named_collection_instance="LocalRoleCollection.local_roles",
-    header=JSON_HEADER, renderer='json')
+    permission=NO_PERMISSION_REQUIRED, header=JSON_HEADER, renderer='json')
 @view_config(
     context=InstanceContext, request_method="PUT",
     ctx_named_collection_instance="Discussion.local_user_roles",
-    header=JSON_HEADER, renderer='json')
+    permission=NO_PERMISSION_REQUIRED, header=JSON_HEADER, renderer='json')
 @view_config(
     context=InstanceContext, request_method="PUT",
     ctx_named_collection_instance="LocalRoleCollection.local_roles",
-    header=JSON_HEADER, renderer='json')
+    permission=NO_PERMISSION_REQUIRED, header=JSON_HEADER, renderer='json')
 def set_local_role(request):
     # Do not use check_permissions, this is a special case
     ctx = request.context
@@ -162,11 +165,11 @@ def set_local_role(request):
 @view_config(
     context=InstanceContext, request_method='DELETE',
     ctx_named_collection_instance="Discussion.local_user_roles",
-    renderer='json')
+    permission=NO_PERMISSION_REQUIRED, renderer='json')
 @view_config(
     context=InstanceContext, request_method='DELETE',
     ctx_named_collection_instance="LocalRoleCollection.local_roles",
-    renderer='json')
+    permission=NO_PERMISSION_REQUIRED, renderer='json')
 def delete_local_role(request):
     ctx = request.context
     instance = ctx._instance
@@ -194,11 +197,11 @@ def delete_local_role(request):
 @view_config(
     context=CollectionContext, request_method="POST",
     ctx_named_collection="Discussion.local_user_roles",
-    header=FORM_HEADER)
+    header=FORM_HEADER, permission=NO_PERMISSION_REQUIRED)
 @view_config(
     context=CollectionContext, request_method="POST",
     ctx_named_collection="LocalRoleCollection.local_roles",
-    header=FORM_HEADER)
+    header=FORM_HEADER, permission=NO_PERMISSION_REQUIRED)
 def use_json_header_for_LocalUserRole_POST(request):
     raise HTTPNotFound()
 
@@ -206,25 +209,25 @@ def use_json_header_for_LocalUserRole_POST(request):
 @view_config(
     context=CollectionContext, request_method="PUT",
     ctx_named_collection="Discussion.local_user_roles",
-    header=FORM_HEADER)
+    header=FORM_HEADER, permission=NO_PERMISSION_REQUIRED)
 @view_config(
     context=CollectionContext, request_method="PUT",
     ctx_named_collection="LocalRoleCollection.local_roles",
-    header=FORM_HEADER)
+    header=FORM_HEADER, permission=NO_PERMISSION_REQUIRED)
 def use_json_header_for_LocalUserRole_PUT(request):
     raise HTTPNotFound()
 
 
 @view_config(context=CollectionContext, renderer='json', request_method='GET',
              ctx_collection_class=LocalUserRole,
-             accept="application/json")
+             accept="application/json", permission=NO_PERMISSION_REQUIRED)
 def view_localuserrole_collection(request):
     return collection_view(request, 'default')
 
 
 @view_config(context=CollectionContext, renderer='json', request_method='GET',
              ctx_collection_class=AgentProfile,
-             accept="application/json")
+             accept="application/json", permission=P_READ)
 def view_profile_collection(request):
     ctx = request.context
     view = request.GET.get('view', None) or ctx.get_default_view() or 'default'
@@ -244,7 +247,7 @@ def view_profile_collection(request):
 
 @view_config(context=InstanceContext, renderer='json', request_method='GET',
              ctx_instance_class=AgentProfile,
-             accept="application/json")
+             accept="application/json", permission=P_READ)
 def view_agent_profile(request):
     profile = instance_view(request)
     ctx = request.context
@@ -260,7 +263,8 @@ def view_agent_profile(request):
 
 @view_config(
     context=InstanceContext, ctx_instance_class=AbstractAgentAccount,
-    request_method='POST', name="verify", renderer='json')
+    request_method='POST', name="verify", renderer='json',
+    permission=NO_PERMISSION_REQUIRED)
 def send_account_verification(request):
     ctx = request.context
     instance = ctx._instance
@@ -273,10 +277,11 @@ def send_account_verification(request):
     return {}
 
 
-# Should I add a secure_connection condition?
+# TODO: Should I add a secure_connection condition?
 @view_config(
     context=InstanceContext, ctx_instance_class=User,
-    request_method='GET', name="verify_password", renderer='json')
+    request_method='GET', name="verify_password", renderer='json',
+    permission=NO_PERMISSION_REQUIRED)
 def verify_password(request):
     ctx = request.context
     user = ctx._instance
@@ -288,7 +293,7 @@ def verify_password(request):
 
 @view_config(
     context=InstanceContext, ctx_instance_class=AbstractAgentAccount,
-    request_method='DELETE', renderer='json')
+    request_method='DELETE', renderer='json', permission=NO_PERMISSION_REQUIRED)
 def delete_abstract_agent_account(request):
     ctx = request.context
     user_id = authenticated_userid(request) or Everyone
@@ -310,11 +315,13 @@ def delete_abstract_agent_account(request):
     return {}
 
 
+# Should there not be a check that we're working on our own account????
 @view_config(context=InstanceContext, request_method='PATCH',
              header=JSON_HEADER, ctx_instance_class=AbstractAgentAccount,
-             renderer='json')
+             renderer='json', permission=NO_PERMISSION_REQUIRED)
 @view_config(context=InstanceContext, request_method='PUT', header=JSON_HEADER,
-             ctx_instance_class=AbstractAgentAccount, renderer='json')
+             ctx_instance_class=AbstractAgentAccount, renderer='json',
+             permission=NO_PERMISSION_REQUIRED)
 def put_abstract_agent_account(request):
     instance = request.context._instance
     old_preferred = instance.preferred
@@ -332,8 +339,10 @@ def put_abstract_agent_account(request):
     return result
 
 
+# Should there not be a check that we're working on our own account????
 @view_config(context=CollectionContext, request_method='POST',
-             header=JSON_HEADER, ctx_collection_class=AbstractAgentAccount)
+             header=JSON_HEADER, ctx_collection_class=AbstractAgentAccount,
+             permission=NO_PERMISSION_REQUIRED)
 def post_email_account(request):
     from assembl.views.auth.views import send_confirmation_email
     response = collection_add_json(request)
@@ -345,7 +354,7 @@ def post_email_account(request):
 
 @view_config(
     context=InstanceContext, request_method='GET',
-    ctx_instance_class=AgentProfile,
+    ctx_instance_class=AgentProfile, permission=P_READ,
     renderer='json', name='interesting_ideas')
 def interesting_ideas(request):
     from .discussion import get_analytics_alerts
@@ -371,7 +380,8 @@ def interesting_ideas(request):
 
 
 @view_config(context=CollectionContext, request_method='POST', renderer="json",
-             header=JSON_HEADER, ctx_collection_class=UserLanguagePreference)
+             header=JSON_HEADER, ctx_collection_class=UserLanguagePreference,
+             permission=NO_PERMISSION_REQUIRED)
 def add_user_language_preference(request):
     ctx = request.context
     user_id = authenticated_userid(request) or Everyone
@@ -397,9 +407,11 @@ def add_user_language_preference(request):
 
 
 @view_config(context=InstanceContext, request_method='PUT', renderer="json",
-             header=JSON_HEADER, ctx_instance_class=UserLanguagePreference)
+             header=JSON_HEADER, ctx_instance_class=UserLanguagePreference,
+             permission=NO_PERMISSION_REQUIRED)
 @view_config(context=InstanceContext, request_method='PATCH', renderer="json",
-             header=JSON_HEADER, ctx_instance_class=UserLanguagePreference)
+             header=JSON_HEADER, ctx_instance_class=UserLanguagePreference,
+             permission=NO_PERMISSION_REQUIRED)
 def modify_user_language_preference(request):
     json_data = request.json_body
     ctx = request.context

@@ -1,7 +1,8 @@
 from simplejson import dumps
 
 from pyramid.view import view_config
-from pyramid.security import authenticated_userid, Everyone
+from pyramid.security import (
+    authenticated_userid, Everyone, NO_PERMISSION_REQUIRED)
 from pyramid.response import Response
 from pyramid.httpexceptions import (
     HTTPOk, HTTPUnauthorized, HTTPBadRequest)
@@ -36,7 +37,7 @@ def view_notification_subscription_collection(request):
 
 
 @view_config(context=CollectionContext, request_method='POST',
-             header=JSON_HEADER,
+             header=JSON_HEADER, permission=NO_PERMISSION_REQUIRED,
              ctx_collection_class=NotificationSubscription)
 def notif_collection_add_json(request):
     ctx = request.context
@@ -112,9 +113,11 @@ def process_all_now(request):
 
 @view_config(context=InstanceContext, request_method='PUT',
     ctx_instance_class=NotificationSubscription,
+    permission=NO_PERMISSION_REQUIRED,
     header=JSON_HEADER, renderer='json')
 @view_config(context=InstanceContext, request_method='PATCH',
     ctx_instance_class=NotificationSubscription,
+    permission=NO_PERMISSION_REQUIRED,
     header=JSON_HEADER, renderer='json')
 def put_notification_request(request):
     result = instance_put_json(request)

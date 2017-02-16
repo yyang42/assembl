@@ -2,7 +2,7 @@
 import json
 import transaction
 
-from pyramid.security import authenticated_userid, Everyone
+from pyramid.security import authenticated_userid, Everyone, NO_PERMISSION_REQUIRED
 from pyramid.httpexceptions import HTTPUnauthorized
 from pyramid.view import view_config
 from pyramid.response import Response
@@ -17,12 +17,14 @@ option_headers = [
 ]
 
 
-@view_config(route_name='csrf_token', request_method='OPTIONS')
+@view_config(route_name='csrf_token', request_method='OPTIONS',
+             permission=NO_PERMISSION_REQUIRED)
 def auth_token_options(request):
     return auth_token(request, option_headers)
 
 
-@view_config(route_name='csrf_token', request_method='GET')
+@view_config(route_name='csrf_token', request_method='GET',
+             permission=NO_PERMISSION_REQUIRED)
 def auth_token(request, extra_headers=None):
     headers = []
     if 'origin' in request.headers:

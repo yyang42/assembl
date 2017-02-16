@@ -1,7 +1,8 @@
 import os.path
 
 from pyramid.view import view_config
-from pyramid.security import authenticated_userid, Everyone, Authenticated
+from pyramid.security import (
+    authenticated_userid, Everyone, Authenticated, NO_PERMISSION_REQUIRED)
 
 from assembl.auth import R_SYSADMIN, P_ADMIN_DISC
 from assembl.models import User
@@ -17,7 +18,8 @@ TEMPLATE_PATH = os.path.join(
 
 @view_config(
     route_name='discussion_list', request_method='GET',
-    renderer='assembl:templates/discussion_list.jinja2')
+    renderer='assembl:templates/discussion_list.jinja2',
+    permission=NO_PERMISSION_REQUIRED)
 def discussion_list_view(request):
     request.session.pop('discussion')
     user_id = authenticated_userid(request) or Everyone

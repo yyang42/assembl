@@ -4,7 +4,7 @@ import transaction
 
 from cornice import Service
 
-from pyramid.security import Everyone, Authenticated
+from pyramid.security import Everyone, Authenticated, NO_PERMISSION_REQUIRED
 from pyramid.response import Response
 from pyramid.view import view_config
 from pyramid.httpexceptions import HTTPNotFound, HTTPBadRequest, HTTPServerError
@@ -272,7 +272,7 @@ def put_discussion_roles_for_user(request):
             "removed": list(known_roles - roles)}
 
 
-@permissions_for_user.get()
+@permissions_for_user.get(permission=NO_PERMISSION_REQUIRED)
 def get_permissions_for_user(request):
     discussion_id = int(request.matchdict['discussion_id'])
     discussion = Discussion.get_instance(discussion_id)
@@ -287,7 +287,7 @@ def get_permissions_for_user(request):
     return get_permissions(user_id, discussion_id)
 
 
-@user_has_permission.get()
+@user_has_permission.get(permission=NO_PERMISSION_REQUIRED)
 def get_user_has_permission(request):
     discussion_id = int(request.matchdict['discussion_id'])
     user_id = request.matchdict['user_id']
@@ -303,7 +303,7 @@ def get_user_has_permission(request):
     return a_user_has_permission(discussion_id, user_id, permission)
 
 
-@users_with_permission.get()
+@users_with_permission.get(permission=NO_PERMISSION_REQUIRED)  # ?
 def get_user_has_permission(request):
     discussion_id = int(request.matchdict['discussion_id'])
     permission = request.matchdict['permission']
@@ -313,7 +313,7 @@ def get_user_has_permission(request):
     return a_users_with_permission(discussion_id, permission)
 
 
-@view_config(route_name='saml_metadata')
+@view_config(route_name='saml_metadata', permission=NO_PERMISSION_REQUIRED)
 def saml_metadata_view(request):
     complete_url = request.route_url('social.complete', backend="saml")
     saml_backend = load_backend(
