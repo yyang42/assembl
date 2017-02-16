@@ -16,10 +16,10 @@ const Translations = {
       expand_search: 'déplier la recherche',
       collapse_search: 'replier la recherche',
       All: 'Tout',
-      post: 'Messages',
+      post: 'Discussions',
       idea: 'Idées',
-      user: 'Personnes',
-      synthesis: 'Synthèses'
+      user: 'Communauté',
+      synthesis: 'Synthèse'
     },
     navbar: {
       home: 'accueil',
@@ -108,9 +108,9 @@ const Translations = {
       expand_search: 'expand search',
       collapse_search: 'collapse search',
       All: 'All',
-      post: 'Messages',
+      post: 'Discussions',
       idea: 'Ideas',
-      user: 'Users',
+      user: 'Community',
       synthesis: 'Synthesis'
     },
     navbar: {
@@ -200,9 +200,9 @@ const Translations = {
       expand_search: 'expand search',
       collapse_search: 'collapse search',
       All: 'All',
-      post: 'Messages',
+      post: 'Discussions',
       idea: 'Ideas',
-      user: 'Users',
+      user: 'Community',
       synthesis: 'Synthesis'
     },
     navbar: {
