@@ -6,6 +6,7 @@ import MapStateToProps from '../../store/mapStateToProps';
 import ProfileIcon from './profileIcon';
 import LanguageMenu from './languageMenu';
 import NavigationMenu from './navigationMenu';
+import Search from '../search';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -47,6 +48,9 @@ class NavBar extends React.Component {
             </div>
             <div className="nav-menu left">
               <NavigationMenu />
+            </div>
+            <div className="">
+              <Search />
             </div>
             <div className="navbar-icons right">
               <div className="white-icon">
