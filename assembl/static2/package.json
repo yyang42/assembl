@@ -46,6 +46,9 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "graphiql": "^0.8.1",
+    "graphql": "^0.8.2",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^15.4.1",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.1",
